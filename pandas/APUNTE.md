@@ -53,7 +53,7 @@ Hay muchas funciones que se llaman igual en el mundo de python pero su funcionam
 
 La diferencia entre `df.columns = ["name1", "name2", ...]` y `df.rename()` es la siguiente:
 
-- `df.columns = ["name1", "name2", ...]`: Este método se utiliza para **renombrar todas las columnas** de un DataFrame. Debes proporcionar nuevos nombres para todas las columnas en el orden correcto. Si no proporcionas suficientes nombres, obtendrás un error. Este método es útil cuando quieres cambiar todos los nombres de las columnas a la vez.
+- `df.columns = ["name1", "name2", ...]`: Este método se utiliza para **renombrar todas las columnas** de un DataFrame. Debes proporcionar nuevos nombres para **todas** las columnas en el orden correcto. Si no proporcionas suficientes nombres, obtendrás un error. Este método es útil cuando quieres cambiar todos los nombres de las columnas a la vez.
 
 ```python
 df.columns = ["name1", "name2", ...]
@@ -68,15 +68,22 @@ df.rename(columns={"old_name1": "new_name1", "old_name2": "new_name2"}, inplace=
 En resumen, si quieres cambiar todos los nombres de las columnas, puedes usar `df.columns = [...]`. Si solo quieres cambiar algunos nombres de columnas o filas, puedes usar `df.rename()`.
 
 ## RESUMEN
+[API reference](https://pandas.pydata.org/docs/reference/frame.html)
+
 **Aplicación de funciones y mapeado**
 - `apply` Este método se utiliza para aplicar una función a lo largo de un eje del DataFrame, ya sea a través de filas (eje=0) o columnas (eje=1). La función puede ser una función predefinida de Python o una función definida por el usuario.
 - `agg` (aggregate): Este método se utiliza para aplicar una o más operaciones de agregación a una o más columnas del DataFrame. Las operaciones de agregación incluyen funciones como sum, mean, max, min, etc.
 - `map` Este método se utiliza para sustituir cada valor de una ``Serie`` (SOLO SERIES) por otro valor, que puede ser derivado de una función, un diccionario o una Serie.
 - `transform` Este método se utiliza para realizar una operación que transforma los datos, pero mantiene la misma forma del DataFrame original. Es útil cuando se desea agregar datos agrupados a un DataFrame original.
 
+**Con GroupBy**
+- ``apply`` es flexible y puede devolver DataFrames, Series o valores escalares.
+- ``agg`` espera funciones que devuelvan valores escalares. Ejemplo df.groupby('grupo').agg(lambda grup: grup.first()), no se puede hacer df.groupby('grupo').agg(lambda grup: grup), porque no devuelve un valor escalar.
+- ``map`` no está disponible para objetos GroupBy.
+
 **Ordemaniento**
 
-1. ``nlargest``: This method is equivalent to df.sort_values but more performant.
+1. ``nlargest``: This method is equivalent to ``df.sort_values(columns, ascending=True).head(n)``, but more performant. Se ordena de mayor a menor, la primera fila es la mayor.
 2. ``sort_values``: 
 
 
@@ -350,6 +357,17 @@ Algunas condiciones y características importantes a tener en cuenta al usar `tr
 
 6. ** inner ** (verificar) Se puede pensar que hace un inner internamente. ejemplo si queres calcular el mas de una grouby haces df.groupby("A").max(), retona una nuevo dataFrame, quero agregar esta nueva informacion al dataFrame original tendre que hacer un concat.
 
+# Merge, join, concatenate and compare
+## `concat`
+```python
+pandas.concat(objs, *, axis=0, join='outer', ignore_index=False, keys=None, levels=None, names=None, verify_integrity=False, sort=False, copy=None)
+```
+Se lo utiliza para concatenar (acomodar filas `axis=0` o columnas `axis=1`), apilar filas una abajo d ela otra o una alado d ela otra, de dos o más DataFrames en un solo DataFrame. No se hace sobre una columna en particular sino sobre todo el DataFrame con `join='outer'` o `join='inner'`.
+
+## `join`
+Se combina atraves de los indices. Se puede hacer un `left join`, `right join`, `inner join` o `outer join`. 
+
+Se puede hacer sobre una columna en particular. [link](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html#pandas.DataFrame.join). en resumen se debe transformar la columna e cuestion en indice y luego hacer el join o se puede hacer directamente con `on` el primer join y el otro de debe hacer con `set_index`.
 
 ## `merge`
 Ver [link](https://statisticsglobe.com/merge-two-pandas-dataframes-python)
@@ -357,7 +375,7 @@ Ver [link](https://statisticsglobe.com/merge-two-pandas-dataframes-python)
 
 
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 ## `pivot`
 ```python

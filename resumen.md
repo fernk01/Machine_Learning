@@ -1,3 +1,57 @@
+# Sesgo y Varianza
+# Validación cruzada
+
+## Series temporales
+[YouTube](https://www.youtube.com/watch?v=_0J-a1IQjjQ)
+```python
+from sklearn.model_selection import TimeSeriesSplit
+```
+
+![alt text](image.png)
+
+# Metricas de evaluación
+- $y_i$ es el valor real
+- $\hat{y}_i$ es el valor predicho
+- $\bar{y}$ es el promedio de los valores reales
+- $n$ es el numero de observaciones
+
+## Eror absoluto maximo (M)
+$$ M(y,\hat{y}) = max(|y_i - \hat{y}_i|) $$
+
+Ejemplo: imaginar un dominio donde el modelo es utilizado para calcular el monto de un prestamo a cierta persona, en este caso se quiere saber cual es el error maximo que se puede cometer en el monto del prestamo, es decir que no pase mas alla de cierto valor.
+## Error absoluto medio (mean absolute error - MAE)
+$$ MAE(y,\hat{y}) = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| $$
+## Error cuadratico medio (mean squared error - MSE)
+$$ MSE(y,\hat{y}) = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
+
+Nota: El error cuadratico medio es mas sensible a los errores grandes que el error absoluto medio, es decir le de mas valor a los errores grandes que los pequeños.
+
+## Raiz del error cuadratico medio (root mean squared error - RMSE)
+$$ RMSE(y,\hat{y}) = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} $$
+## Suma residual de cuadrados (residual sum of squares - RSS)
+$$ RSS(y,\hat{y}) = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
+
+## Suma total de cuadrados (total sum of squares - SST)
+$$ SST(y) = \sum_{i=1}^{n} (y_i - \bar{y})^2 $$
+
+## R cuadrado (R^2) coeficiente de determinacion
+$$ R^2(y,\hat{y}) = 1 - \frac{SSR(y,\hat{y})}{SST(y)} $$
+$$ R^2(y,\hat{y}) = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} $$
+
+Sirve para determinar que tan bien se ajusta el modelo a los datos, es decir que tan bien el modelo explica la variabilidad de los datos. Esta metrica se encuentra entre 0 y 1, donde 0 indica que el modelo no explica la variabilidad de los datos y 1 indica que el modelo explica toda la variabilidad de los datos.
+
+Ademas no aplicar a modelos que no sean de regresion lineal.
+
+El numero de variables independiente aumenta el valor de R^2 aumenta, por lo que se recomienda usar el R^2 ajustado.
+
+## R cuadrado ajustado (R^2 ajustado)
+$$ R^2_{ajustado}(y,\hat{y}) = 1 - (1 - R^2) \frac{n-1}{n-p-1} $$
+
+- $n$ es el numero de observaciones
+- $p$ es el numero de variables independientes
+
+[vereficar](https://www.youtube.com/watch?v=ZmNDRnmYaPc)
+
 # La Ley de Zipf y las Leyes de Potencias
 1. **Ley de Zipf:** Es una ley empírica según la cual en una determinada lengua la frecuencia de aparición de distintas palabras sigue una distribución que puede aproximarse por
 

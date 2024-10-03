@@ -140,7 +140,7 @@ $$ \sum_{i=1}^{n} \frac{1}{r} ^{l_i} \leq 1 $$
 
 Dada una fuente de $n$ simbolos, con longitudes $l_1, l_2, ..., l_n$ y un alfabeto de tamaño $r$, si existe un codigo que cumple con la desigualdad de Kraft, entonces existe un codigo que cumple con la desigualdad de McMillan.
 
-- SSi la desigualdad de Kraft se cumple con desigualdad estricta ($< 1$), el código tiene cierta redundancia.
+- Si la desigualdad de Kraft se cumple con desigualdad estricta ($< 1$), el código tiene cierta redundancia.
 - Si la desigualdad de Kraft se cumple con igualdad ($= 1$), el código es un código de prefijo óptimo y sin redundancia, el código en cuestión es un código completo.
 - Si la desigualdad de Kraft no se cumple, el código no es decodificable de forma única.
 - Para cada código decodificable de forma única, existe un código de prefijo con la misma distribución de longitud.

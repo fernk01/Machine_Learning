@@ -95,3 +95,5 @@ Definición: Formalmente, la distancia de Mahalanobis entre dos variables aleato
 \Sigma $ se define como:
 
 $$ d(\vec{x}, \vec{y}) = \sqrt{(\vec{x} - \vec{y})^T \Sigma^{-1} (\vec{x} - \vec{y})} $$
+
+ver [Outliers](Outliers.md) para más detalles.

@@ -6,8 +6,8 @@ Un Árbol de Decisión es un algoritmo de aprendizaje supervisado no paramétric
 - **Entropía**: Mide la impureza de un conjunto de datos. Cuanto mayor sea la entropía, mayor será la incertidumbre en los datos. La entropía se calcula como:
     $$ H(S) = - \sum_{i=1}^{n} p_i \log_2(p_i) $$
 
-    - S: Conjunto de datos
-    - n: Número de clases
+    - $S$: Conjunto de datos
+    - $n$: Número de clases
     - $p_i$: Proporción de la clase i en el conjunto de datos
 
     Cuanto mayor sea la entropía, mayor será la incertidumbre en los datos y, por lo tanto, mayor será la impureza. En el contexto de un árbol de decisión, se busca dividir el conjunto de datos en subconjuntos más puros, es decir, con menor entropía.
@@ -15,23 +15,23 @@ Un Árbol de Decisión es un algoritmo de aprendizaje supervisado no paramétric
 - **Impureza de Gini**: Mide la probabilidad de clasificar incorrectamente un elemento en un conjunto de datos. La impureza de Gini se calcula como:
     $$ Gini(S) = 1 - \sum_{i=1}^{n} p_i^2 $$
 
-    - S: Conjunto de datos
-    - n: Número de clases
+    - $S$: Conjunto de datos
+    - $n$: Número de clases
     - $p_i$: Proporción de la clase i en el conjunto de datos
 
     Cuanto menor sea la impureza de Gini, más puro será el conjunto de datos. En un árbol de decisión, se busca dividir el conjunto de datos de manera que se minimice la impureza de Gini en los subconjuntos resultantes.
 
 - **Log Loss (Pérdida Logarítmica)**: Es una métrica utilizada para evaluar la precisión de un clasificador de probabilidades. La pérdida logarítmica se calcula como:
-    $$ L_{log}(y, p) = - \frac{1}{N} \sum_{i=1}^{N} \left( y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right) $$
+    $$ L_{log}(y, p) = - \frac{1}{N} \cdot \sum_{i=1}^{N} \left( y_i \cdot \log(p_i) + (1 - y_i) \cdot \log(1 - p_i) \right) $$
 
-    - N: Número total de observaciones
+    - $N$: Número total de observaciones
     - $y_i$: Valor real de la clase (0 o 1)
     - $p_i$: Probabilidad predicha de la clase 1
 
     La pérdida logarítmica penaliza las predicciones incorrectas más que las correctas. Un valor de pérdida logarítmica más bajo indica un mejor rendimiento del modelo.
 
 - **impurity ponderada (weighted impurity)**: La impureza ponderada se calcula como:
-    $$ impurity(S, A) = \sum_{v \in V} \frac{|S_v|}{|S|} H(S_v) $$
+    $$ impurity(S, A) = \sum_{v \in V} \frac{|S_v|}{|S|} \cdot H(S_v) $$
 
     **Propósito de la impureza Ponderada**
 
@@ -222,13 +222,13 @@ Otro ejemplo [data set categorical](https://python-course.eu/machine-learning/de
 Pros
 - Los árboles de decisión son fáciles de interpretar y visualizar.
 - Puede capturar fácilmente patrones no lineales.
-- Requiere menos procesamiento previo de datos por parte del usuario; por ejemplo, no es necesario normalizar las columnas.
+- Requiere menos procesamiento previo de datos por parte del usuario; por ejemplo, no es necesario **normalizar** las columnas.
 - Se puede utilizar para ingeniería de características, como predecir valores faltantes, y es adecuado para la selección de variables.
 - El árbol de decisión no tiene suposiciones sobre la distribución debido a la naturaleza no paramétrica del algoritmo.
 
 Contras
 - Sensible a datos ruidosos. Puede sobreajustar datos ruidosos.
-- La pequeña variación (o varianza) en los datos puede dar como resultado un árbol de decisión diferente. Esto se puede reducir mediante algoritmos de embolsado e impulso.
+- La pequeña variación (o varianza) en los datos puede dar como resultado un árbol de decisión diferente. Esto se puede reducir mediante algoritmos de embolsado (Bagging) e impulso (Boosting).
 - Los árboles de decisión están sesgados con conjuntos de datos de desequilibrio, por lo que se recomienda equilibrar el conjunto de datos antes de crear el árbol de decisión.
 
 ## Consideraciones Adicionales

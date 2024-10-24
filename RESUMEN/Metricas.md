@@ -16,7 +16,6 @@ Para cada una de las métricas:
 - TN (True Negative): Son los valores que el algoritmo clasifica como negativos y que realmente son negativos.
 - FP (False Positive): Falsos positivos, es decir, valores que el algoritmo clasifica como positivo cuando realmente son negativos.
 - FN (False Negative): Falsos negativos, es decir, valores que el algoritmo clasifica como negativo cuando realmente son positivos.
-  \end{itemize}
 
 ![alt text](./images/confusion_matrix.png)
 ![alt text](image-1.png)
@@ -108,6 +107,22 @@ _Matriz de Confusión_
 |----------------|----------------|---------------|
 | **Real: 🫑**   | TP <br> 3      | FN <br> 2     |
 | **Real: 🐺**   | FP <br> 1      | TN <br> 4     |
+
+```mathematica
+          Predicted Positive | Predicted Negative
+          --------------------------------------
+Actual Positive  |      TP      |      FN      |
+          --------------------------------------
+Actual Negative  |      FP      |      TN      |
+
+```
+_Matriz de Confusión (segun python)_
+
+|               | Predicción (0):🐺 | Predicción (1): 🫑 |
+|---------------|-------------------|-------------------|
+| Real (0):🐺   | TN <br> 4        | FP <br> 1         |
+| Real (1):🫑   | FN <br> 2        | TP <br> 3         |
+
 
 Interpretación
 
@@ -331,6 +346,48 @@ $
 \text{Especificidad} = \text{Recall clase 0} = 0.88
 $
 
+## Ejemplo 3: 3x3
+
+Para calcular la precisión (precision) de la clase cero a partir de la matriz de confusión, puedes usar la siguiente fórmula:
+
+### Fórmula de Precisión
+
+$$ \text{Precisión} = \frac{\text{TP}}{\text{TP} + \text{FP}} $$
+
+Donde:
+- **TP (True Positive)**: Verdaderos positivos, que son las predicciones correctas de la clase cero.
+- **FP (False Positive)**: Falsos positivos, que son las predicciones incorrectas de la clase cero (casos que no son cero pero fueron predichos como cero).
+
+### Identificación de TP y FP
+
+En la matriz que proporcionaste:
+
+
+|                        | Predicción 0 | Predicción 1 | Predicción 2 |
+|------------------------|---------------------|-------------------|---------------------|
+| **Real 0**      |    13    |     1     |     1     | 
+| **Real 1**      |    0     |    15     |     3     | 
+| **Real 2**      |    4     |     1     |    13     |
+
+
+- **TP (True Positive) para la clase 0**: Es el valor en la fila de "Real 0" y la columna de "Predicción 0", que es **13**.
+- **FP (False Positive) para la clase 0**: Es la suma de todos los valores en la columna de "Predicción 0", excepto el de "Real 0". Es decir:
+  - De la fila de "Real 1": **0**
+  - De la fila de "Real 2": **4**
+
+Por lo tanto:
+
+$$ \text{FP} = 0 + 4 = 4 $$
+
+### Cálculo de la Precisión
+
+Ahora puedes calcular la precisión para la clase cero:
+
+$$ \text{Precisión} = \frac{TP}{TP + FP} = \frac{13}{13 + 4} = \frac{13}{17} \approx 0.7647 $$
+
+### Resultado
+
+La precisión para la clase cero es aproximadamente **0.7647** o **76.47%**.
 ### Resumen:
 
 - **Recall (clase 1 - Lloverá)** = 0.30 (detecta correctamente el 30% de los días con lluvia).

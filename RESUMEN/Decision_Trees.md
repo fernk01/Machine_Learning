@@ -44,7 +44,7 @@ Un Árbol de Decisión es un algoritmo de aprendizaje supervisado no paramétric
     $$IG(S, A) =  impurity(S) - \sum_{v \in \text{valores}(A)} \frac{|S_v|}{|S|} \times impurity(S_v)$$
 
     donde:
-    - $impurity(S)$ es la impureza del conjunto de datos original $S$. (entropy, gini, LogLoss).
+    - $impurity(S)$ es la impureza del conjunto de datos original $S$. (``entropy``, ``gini``, ``LogLoss``).
     - $A$ es el atributo (o feature) para el cual estamos calculando la ganancia de información.
     - $ \text{valores}(A)$ son los posibles valores del atributo $A$.
     - $S_v$ es el subconjunto de $ S $ para el valor $ v $ del atributo $A$.
@@ -215,8 +215,10 @@ $$ \text{LogLoss}(S) = - \left( \frac{11}{20} \log \left( \frac{11}{20} \right) 
 
 Luego, se aplica la fórmula de la ganancia de información utilizando la métrica de impureza correspondiente (entropía, Gini o Log Loss).
 
-## Ejemplo 3
+## Ejemplo 3: Data set categorical
 Otro ejemplo [data set categorical](https://python-course.eu/machine-learning/decision-trees-in-python.php) es mas facil, son las mismas cuentas pero lo hace todo junto y se hace medio comufuso.
+
+Ver también el pdf de la catedra.
 
 ## Pros VS. Cons
 Pros

@@ -1,22 +1,25 @@
-# Bootstrapping
-El **bootstrapping** (o bootstrap) es un método de remuestreo propuesto por Bradley Efron en 1979. Se utiliza en estadística para aproximar la distribución en el muestreo de un estadístico⁴. 
 
-Este método se usa frecuentemente para aproximar el sesgo o la varianza de un análisis estadístico, así como para construir intervalos de confianza o realizar contrastes de hipótesis sobre parámetros de interés⁴. En la mayor parte de los casos no pueden obtenerse expresiones cerradas para las aproximaciones bootstrap y por lo tanto es necesario obtener remuestras en un ordenador para poner a prueba el método⁴.
 
-El proceso de utilización de Bootstrap Statistics en estadística consta de los siguientes pasos:
-1. Obtener una muestra de datos de la población de interés.
-2. Generar múltiples muestras bootstrap a partir de la muestra original. Esto se hace tomando una muestra aleatoria con reemplazo del conjunto de datos original.
-3. Calcular el estadístico de interés para cada una de las muestras bootstrap generadas.
-4. Utilizar las estadísticas calculadas en las muestras bootstrap para estimar el sesgo, la varianza y otros aspectos de interés.
-5. Obtener intervalos de confianza y realizar pruebas de hipótesis basados en los resultados obtenidos.
 
-**Ejemplo de Bootstrapping**:
-Imagina que tienes un conjunto de datos con cinco observaciones: [5, 3, 2, 1, 4]. Podemos crear una muestra de bootstrap seleccionando cinco observaciones al azar, con reemplazo, por ejemplo: [5, 2, 3, 5, 1]. Observa que algunas observaciones pueden aparecer más de una vez y algunas pueden no aparecer en absoluto.
 
-**Relación con el Aprendizaje Automático**:
-El bootstrapping es fundamental en el aprendizaje automático, especialmente en los métodos de conjunto como Bagging y Random Forests⁷. En estos métodos, varios modelos se entrenan por separado en muestras de bootstrap de los datos de entrenamiento, y sus predicciones se combinan para hacer la predicción final⁷. Esto mejora la estabilidad y precisión de los algoritmos de aprendizaje automático.
 
-Además, el bootstrapping permite cuantificar la incertidumbre asociada con varios modelos de aprendizaje automático y sus parámetros. Es especialmente útil cuando la distribución teórica de una estadística de interés es complicada o desconocida.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # sklearn.pipeline
 La clase `Pipeline` en scikit-learn es una herramienta muy útil para automatizar el proceso de transformación de datos y la aplicación de modelos predictivos. Permite encadenar una serie de transformaciones y un estimador final en un solo objeto, facilitando así la creación de flujos de trabajo reproducibles y eficientes.
